@@ -1,0 +1,25 @@
+alert ("hi");
+
+
+
+
+var data = [
+    {
+        label: 'node1',
+        children: [
+            { label: 'child1' },
+            { label: 'child2' }
+        ]
+    },
+    {
+        label: 'node2',
+        children: [
+            { label: 'child3' }
+        ]
+    }
+];
+$('#show_tree').tree({
+    data: data,
+    autoOpen: true,
+    dragAndDrop: true
+});

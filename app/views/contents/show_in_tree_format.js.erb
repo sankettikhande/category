@@ -1,0 +1,45 @@
+alert ("<%=@contents.first.label%>")
+alert ("<%=@contents.map{|a| a.label}%>")
+var data = 
+"<%=@contents.map{|con| 
+[
+    {
+        label: '<%con if con.is_root?%>',
+        children: [
+            { label: 'child1' },
+            { label: 'child2' }
+        ]
+    }]
+    con}%>"
+    
+
+<div id="tree"></div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.jqtree-element').on('click', function(){
+        alert($(this));
+    });
+    $("#tree_link").click(function(){
+        $.getJSON(
+            '/contents/show_in_tree_format.json',   
+            function(data) {
+                $('#tree').tree({
+                    data: data,
+                    autoOpen: true,
+                    dragAndDrop: true,
+                            onCreateLi: function(node, $li) {
+            
+            $li.find('.jqtree-element').attr("c_id", node.id );
+        }                  
+                });
+            }
+
+        );
+    });
+    $('#tree').bind('tree.dblclick',function(event) {
+                    location.href = "http://localhost:3000/contents/" + event.node.id;
+                }
+            );
+})
+</script>

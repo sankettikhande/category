@@ -1,0 +1,7 @@
+<div class="show">
+  <%=link_to content.label,content%>
+  <div class="actions">
+    <%= link_to 'Reply', new_content_path(:parent_id=>content),:class=>'button' %>
+    <%= link_to 'Destroy', content, method: :delete, 
+                data: { confirm: 'Are you sure?' } %>
+  </div>

@@ -1,0 +1,15 @@
+<h1>CATEGORY</h1>
+<%=nested_contents @contents.arrange(:order => :created_at)%>
+<%=render 'form'%>
+
+<p>
+<%= link_to "Show Tree", show_in_tree_format_contents_path , {:remote=>true, class: 'btn btn-danger'} %></p>  
+
+<div id="show_tree"></div>
+
+<div id="tree1"></div>
+
+
+<script type="text/javascript">
+
+</script>
